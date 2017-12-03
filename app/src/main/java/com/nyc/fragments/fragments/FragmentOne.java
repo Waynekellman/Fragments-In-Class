@@ -11,6 +11,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 
+import com.nyc.fragments.CheckingInput;
 import com.nyc.fragments.R;
 
 
@@ -44,7 +45,9 @@ public class FragmentOne extends Fragment {
             @Override
             public void onClick(View view) {
                 String string = editText.getText().toString();
-                bundle.putString("main", string);
+                CheckingInput checkingInput = new CheckingInput(string, getContext());
+                String output = checkingInput.getStringResource();
+                bundle.putString("main", output);
                 fragmentTwo.setArguments(bundle);
                 FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
                 fragmentTransaction.setCustomAnimations(R.anim.enter, R.anim.exit, R.anim.pop_enter, R.anim.pop_exit);
